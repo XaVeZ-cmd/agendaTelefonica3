@@ -1,32 +1,14 @@
 package br.com.servico.agendatelefonica.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import br.com.servico.agendatelefonica.models.Contatos;
-import br.com.servico.agendatelefonica.repository.ContatoRepository;
 
-@Service
-public class ContatoService implements InterfaceContatoService {
+public interface ContatoService {
     
-    @Autowired
-    private ContatoRepository contatoRepository;
-
-    
-	@Override
-	public List<Contatos> listarContato() {
-		return (List<Contato>) contatoRepository.findAll();
-	}
-
-	@Override
-	public void salvar(Contato contato) {
-		contatoRepository.save(contato);
-	}
-
-	@Override
-	public void eliminar(Long idContato) {
-		contatoRepository.deleteById(idContato);
-
-	}
-
+    List<Contatos> listarContato();
+    Contatos salvarContato(Contatos contato);
+    Contatos buscarContato(Long id);
+    void deletarContato(Long id);
+    Contatos atualizarContato(Contatos contato);
 }

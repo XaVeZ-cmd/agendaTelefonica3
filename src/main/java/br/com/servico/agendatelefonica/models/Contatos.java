@@ -10,11 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -28,13 +29,11 @@ public class Contatos {
     @Column(name = "Nome")
     private String nome;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "Contatos")
-    @NotEmpty
-    @Column(name = "Email")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idEmail")
     private Email email;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "Contatos")
-    @NotEmpty
-    @Column(name = "Telefone")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idTelefone")
     private Telefone telefone;
 }
