@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 public class Telefone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTelefone;
+        private Long idTelefone;
 
-    @NotEmpty
-    @Column(name = "Telefone")
-    private String telefone;
+        @NotEmpty
+        @Column(name = "Telefone")
+        private String telefone;
 }

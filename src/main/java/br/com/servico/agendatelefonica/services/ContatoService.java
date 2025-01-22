@@ -2,11 +2,12 @@ package br.com.servico.agendatelefonica.services;
 
 import java.util.List;
 
-import br.com.servico.agendatelefonica.models.Contatos;
+import br.com.servico.agendatelefonica.services.impl.dto.ContatosDTO;
+
 
 public interface ContatoService {
     
-    List<Contatos> listarContato();
+    List<ContatosDTO> listarContato();
     Contatos salvarContato(Contatos contato);
     Contatos buscarContato(Long id);
     void deletarContato(Long id);
