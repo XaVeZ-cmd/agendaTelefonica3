@@ -18,10 +18,9 @@ import lombok.NoArgsConstructor;
 public class Email {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_email")
     private Long idEmail;
 
-    @NotEmpty
-    @Column(name = "Email")
     private String email;
 
 }

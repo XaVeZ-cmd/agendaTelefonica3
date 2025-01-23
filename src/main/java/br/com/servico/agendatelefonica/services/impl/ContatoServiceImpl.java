@@ -5,11 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.servico.agendatelefonica.models.Contatos;
+import br.com.servico.agendatelefonica.models.Contato;
+import br.com.servico.agendatelefonica.models.Email;
 import br.com.servico.agendatelefonica.repository.ContatoRepository;
+import br.com.servico.agendatelefonica.repository.EmailRepository;
+import br.com.servico.agendatelefonica.repository.TelefoneRepository;
 import br.com.servico.agendatelefonica.services.ContatoService;
-import br.com.servico.agendatelefonica.services.impl.dto.ContatosDTO;
+import br.com.servico.agendatelefonica.services.impl.dto.ContatoDTO;
+import br.com.servico.agendatelefonica.services.impl.dto.EmailDTO;
 import br.com.servico.agendatelefonica.services.impl.mapper.ContatoMapper;
+import br.com.servico.agendatelefonica.services.impl.mapper.EmailMapper;
 
 
 @Service
@@ -18,20 +23,36 @@ public class ContatoServiceImpl implements ContatoService {
     @Autowired
     private ContatoRepository contatoRepository;
 
+    @Autowired 
+    private EmailRepository emailRepository;
+
+    @Autowired
+    private TelefoneRepository telefoneRepository;
+
     private ContatoMapper contatoMapper;
 
-    public ContatoServiceImpl(ContatoRepository contatoRepository, ContatoMapper contatoMapper) {
+    public ContatoServiceImpl(ContatoRepository contatoRepository, EmailRepository emailRepository, 
+                              TelefoneRepository telefoneRepository, ContatoMapper contatoMapper) {
         this.contatoRepository = contatoRepository;
+        this.emailRepository = emailRepository;
+        this.telefoneRepository = telefoneRepository;
         this.contatoMapper = contatoMapper;
     }
     
-
     @Override
-    public List<ContatosDTO> listarContato() {
-        List<Contatos> contatos = contatoRepository.findAll();
+    public List<ContatoDTO> listarContato() {
+        List<Contato> contatos = contatoRepository.findAll();
         return contatoMapper.toListContatosDTO(contatos);
-        // return contatoRepository.findAll();
+
     }
+    @Override
+    public ContatoDTO salvarContato(ContatoDTO contatoDTO) {
+        Contato contato = contatoMapper.toContato(contatoDTO);
+        Contato response = contatoRepository.save(contato);
+        ContatoDTO contatoDTOResponse = contatoMapper.toContatoDTO(response);
+        return contatoDTOResponse;
+    }
+
    /* @Override
     public ContatosDTO salvarContato(Contatos contato) {
         Contatos response = contatoRepository.save(contato);
@@ -50,5 +71,8 @@ public class ContatoServiceImpl implements ContatoService {
     public Contatos atualizarContato(Contatos contato) {
         return contatoRepository.save(contato);
     }*/
+
+
+
 
 }

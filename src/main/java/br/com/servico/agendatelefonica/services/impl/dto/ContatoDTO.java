@@ -7,9 +7,7 @@ import lombok.Data;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-public class ContatosDTO {
-
-    private Long idContato;
+public class ContatoDTO {
 
     private String nome;
 
