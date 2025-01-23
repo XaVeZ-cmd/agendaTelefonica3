@@ -7,9 +7,15 @@ import br.com.servico.agendatelefonica.services.impl.dto.TelefoneDTO;
 
 @Component
 public class TelefoneMapper {
-    public static Telefone toTelefone(TelefoneDTO telefoneDTO){
+    public static final Telefone toTelefone(TelefoneDTO telefoneDTO){
         Telefone telefone = new Telefone();
         telefone.setTelefone(telefoneDTO.getTelefone());
         return telefone;
+    }
+    
+    public static final TelefoneDTO toTelefoneDTO(Telefone telefone) {
+    	TelefoneDTO telefoneDTO = new TelefoneDTO();
+    	telefoneDTO.setTelefone(telefone.getTelefone());
+    	return telefoneDTO;
     }
 }

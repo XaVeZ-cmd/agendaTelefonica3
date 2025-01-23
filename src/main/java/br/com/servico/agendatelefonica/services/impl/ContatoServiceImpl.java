@@ -29,10 +29,10 @@ public class ContatoServiceImpl implements ContatoService {
     @Override
     public List<ContatosDTO> listarContato() {
         List<Contatos> contatos = contatoRepository.findAll();
-        return contatoMapper.toContatoDTO(contatos);
+        return contatoMapper.toListContatosDTO(contatos);
         // return contatoRepository.findAll();
     }
-    @Override
+   /* @Override
     public ContatosDTO salvarContato(Contatos contato) {
         Contatos response = contatoRepository.save(contato);
         ContatosDTO contatoDTO = contatoMapper.toContatoDTO(response);
@@ -49,6 +49,6 @@ public class ContatoServiceImpl implements ContatoService {
     @Override
     public Contatos atualizarContato(Contatos contato) {
         return contatoRepository.save(contato);
-    }
+    }*/
 
 }
