@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 import br.com.servico.agendatelefonica.models.Contato;
 
 @Repository
-public interface ContatoRepository extends JpaRepository<Contato, Long> {}
+public interface ContatoRepository extends JpaRepository<Contato, Long> {
+
+    Contato findByNome(String nome);
+
+}

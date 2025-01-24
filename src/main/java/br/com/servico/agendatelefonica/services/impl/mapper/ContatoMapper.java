@@ -15,6 +15,7 @@ public class ContatoMapper {
         // Telefone telefone = TelefoneMapper.toTelefone(contatosDTO.getTelefone());
         // Email email = EmailMapper.toEmail(contatosDTO.getEmail());
         Contato contato = new Contato();
+        contato.setIdContato(contatosDTO.getId());
         contato.setNome(contatosDTO.getNome());
         contato.setEmail(EmailMapper.toEmail(contatosDTO.getEmail()));
         contato.setTelefone(TelefoneMapper.toTelefone(contatosDTO.getTelefone()));
@@ -27,6 +28,7 @@ public class ContatoMapper {
         // EmailDTO emailDTO = EmailMapper.toEmailDTO(contatos.getEmail());
         // TelefoneDTO telefoneDTO = TelefoneMapper.toTelefoneDTO(contatos.getTelefone());
         ContatoDTO contatoDTO = new ContatoDTO();
+        contatoDTO.setId(contatos.getIdContato());
         contatoDTO.setNome(contatos.getNome());
         contatoDTO.setEmail(contatos.getEmail().getEmail());
         contatoDTO.setTelefone(contatos.getTelefone().getTelefone());

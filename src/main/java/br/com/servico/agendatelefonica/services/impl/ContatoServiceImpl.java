@@ -40,20 +40,25 @@ public class ContatoServiceImpl implements ContatoService {
         return contatoDTOResponse;
     }
 
-   /* @Override
-    public Contatos buscarContato(Long id) {
-        return contatoRepository.findById(id).get();
+    @Override
+    public ContatoDTO buscarContatoNome(String nome) throws Exception {
+        Contato contato = contatoRepository.findByNome(nome);
+        if (contato == null) {
+            throw new Exception("Contato não encontrado para o nome: " + nome);
+        }
+        ContatoDTO contatoDTO = contatoMapper.toContatoDTO(contato);
+        return contatoDTO;
     }
+
+    @Override
+    public ContatoDTO buscarContatoId(Long id) {
+        Contato contato = contatoRepository.findById(id).get();
+        ContatoDTO contatoDTO = contatoMapper.toContatoDTO(contato);
+        return contatoDTO;
+    }
+
     @Override
     public void deletarContato(Long id) {
-        contatoRepository.deleteById(id);
+        contatoRepository.deleteById(id);   
     }
-    @Override
-    public Contatos atualizarContato(Contatos contato) {
-        return contatoRepository.save(contato);
-    }*/
-
-
-
-
 }

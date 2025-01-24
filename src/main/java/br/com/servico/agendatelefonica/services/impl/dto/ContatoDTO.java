@@ -10,6 +10,8 @@ import lombok.Data;
 @Data
 public class ContatoDTO {
 
+    private Long id;
+
     private String nome;
 
     @JsonProperty("email")
@@ -17,7 +19,4 @@ public class ContatoDTO {
 
     private String telefone;
 
-    // private EmailDTO email;
-
-    // private TelefoneDTO telefone;
 }
