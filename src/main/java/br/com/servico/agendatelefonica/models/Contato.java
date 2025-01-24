@@ -10,31 +10,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Contatos {
+public class Contato {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idContato;
 
     @NotEmpty
-    @Column(name = "Nome")
+    @Column(name = "nome")
     private String nome;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "Contatos")
-    @NotEmpty
-    @Column(name = "Email")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_email")
     private Email email;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "Contatos")
-    @NotEmpty
-    @Column(name = "Telefone")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_telefone")
     private Telefone telefone;
 }
