@@ -12,28 +12,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Contatos {
+public class Contato {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idContato;
 
     @NotEmpty
-    @Column(name = "Nome")
+    @Column(name = "nome")
     private String nome;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idEmail")
+    @JoinColumn(name = "id_email")
     private Email email;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idTelefone")
+    @JoinColumn(name = "id_telefone")
     private Telefone telefone;
 }
