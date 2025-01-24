@@ -7,9 +7,9 @@ import br.com.servico.agendatelefonica.services.impl.dto.EmailDTO;
 
 @Component
 public class EmailMapper {
-	public static final Email toEmail(EmailDTO emailDTO){
+	public static final Email toEmail(String emailDTO){
         Email email = new Email();
-        email.setEmail(emailDTO.getEmail());
+        email.setEmail(emailDTO);
         return email;
     }
 	

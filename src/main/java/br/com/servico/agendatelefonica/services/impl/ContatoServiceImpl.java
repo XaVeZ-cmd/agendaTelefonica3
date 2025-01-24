@@ -6,15 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.servico.agendatelefonica.models.Contato;
-import br.com.servico.agendatelefonica.models.Email;
 import br.com.servico.agendatelefonica.repository.ContatoRepository;
-import br.com.servico.agendatelefonica.repository.EmailRepository;
-import br.com.servico.agendatelefonica.repository.TelefoneRepository;
 import br.com.servico.agendatelefonica.services.ContatoService;
 import br.com.servico.agendatelefonica.services.impl.dto.ContatoDTO;
-import br.com.servico.agendatelefonica.services.impl.dto.EmailDTO;
 import br.com.servico.agendatelefonica.services.impl.mapper.ContatoMapper;
-import br.com.servico.agendatelefonica.services.impl.mapper.EmailMapper;
 
 
 @Service
@@ -23,19 +18,11 @@ public class ContatoServiceImpl implements ContatoService {
     @Autowired
     private ContatoRepository contatoRepository;
 
-    @Autowired 
-    private EmailRepository emailRepository;
-
-    @Autowired
-    private TelefoneRepository telefoneRepository;
-
     private ContatoMapper contatoMapper;
 
-    public ContatoServiceImpl(ContatoRepository contatoRepository, EmailRepository emailRepository, 
-                              TelefoneRepository telefoneRepository, ContatoMapper contatoMapper) {
+    public ContatoServiceImpl(ContatoRepository contatoRepository, 
+                            ContatoMapper contatoMapper) {
         this.contatoRepository = contatoRepository;
-        this.emailRepository = emailRepository;
-        this.telefoneRepository = telefoneRepository;
         this.contatoMapper = contatoMapper;
     }
     
@@ -54,12 +41,6 @@ public class ContatoServiceImpl implements ContatoService {
     }
 
    /* @Override
-    public ContatosDTO salvarContato(Contatos contato) {
-        Contatos response = contatoRepository.save(contato);
-        ContatosDTO contatoDTO = contatoMapper.toContatoDTO(response);
-        return contatoDTO;
-    }
-    @Override
     public Contatos buscarContato(Long id) {
         return contatoRepository.findById(id).get();
     }

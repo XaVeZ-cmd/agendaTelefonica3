@@ -8,6 +8,7 @@ public interface ContatoService {
     
     List<ContatoDTO> listarContato();
     ContatoDTO salvarContato(ContatoDTO contatoDTO);
+    void deletarContato(ContatoDTO contatoDTO);
    /* 
     Contatos buscarContato(Long id);
     void deletarContato(Long id);

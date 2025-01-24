@@ -1,6 +1,7 @@
 package br.com.servico.agendatelefonica.services.impl.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
@@ -11,7 +12,12 @@ public class ContatoDTO {
 
     private String nome;
 
-    private EmailDTO email;
+    @JsonProperty("email")
+    private String email;
 
-    private TelefoneDTO telefone;
+    private String telefone;
+
+    // private EmailDTO email;
+
+    // private TelefoneDTO telefone;
 }
